@@ -1657,6 +1657,230 @@
             }
         }
 
+
+        /* 最後一頁精簡版：畫面只保留三個主要區塊，其餘資訊收進展開區 */
+        #step3 > .btn-back {
+            margin-bottom: 7px;
+        }
+
+        .selection-trail {
+            margin: 0 0 16px;
+            color: #8792a2;
+            font-size: 0.72rem;
+            line-height: 1.48;
+        }
+
+        .selection-trail-heading {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 800;
+            color: #798596;
+        }
+
+        .selection-trail-items {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px 7px;
+        }
+
+        .selection-trail-item {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 5px;
+            min-width: 0;
+        }
+
+        .selection-trail-item b {
+            flex: 0 0 auto;
+            color: #91a0b1;
+            font-size: 0.68rem;
+            font-weight: 800;
+        }
+
+        .selection-trail-item > span {
+            color: #6e7b8d;
+            font-weight: 650;
+        }
+
+        .selection-trail-items > i {
+            color: #bec5cd;
+            font-style: normal;
+        }
+
+        .primary-result-block {
+            margin-bottom: 18px;
+            padding: 25px 24px 18px;
+        }
+
+        .primary-result-block .result-heading {
+            margin-bottom: 0;
+        }
+
+        .primary-result-block .result-heading h2 {
+            margin-bottom: 0;
+            font-size: 1.48rem;
+            line-height: 1.48;
+        }
+
+        .inline-more-details {
+            margin-top: 17px;
+            border-top: 1px solid rgba(219, 226, 233, 0.9);
+        }
+
+        .inline-more-details > summary {
+            position: relative;
+            padding: 12px 30px 2px 0;
+            color: #8591a1;
+            font-size: 0.82rem;
+            font-weight: 750;
+            cursor: pointer;
+            list-style: none;
+            transition: color 0.2s ease;
+        }
+
+        .inline-more-details > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .inline-more-details > summary::after {
+            content: '＋';
+            position: absolute;
+            top: 11px;
+            right: 2px;
+            color: #9ca7b3;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .inline-more-details[open] > summary {
+            color: #65768b;
+            padding-bottom: 11px;
+        }
+
+        .inline-more-details[open] > summary::after {
+            content: '－';
+        }
+
+        .inline-more-body {
+            padding-top: 3px;
+        }
+
+        .result-context-note {
+            margin-bottom: 13px;
+            color: #7a8797;
+            font-size: 0.88rem;
+            line-height: 1.68;
+            text-align: center;
+        }
+
+        .result-inline-details .result-reveal {
+            margin: 0 0 13px;
+            padding: 16px 17px;
+        }
+
+        .result-inline-details .diagnosis-box {
+            margin: 0 0 14px;
+        }
+
+        .professional-divider {
+            height: 1px;
+            margin: 17px 0 0;
+            background: #e8ebef;
+        }
+
+        .result-inline-details .professional-capability-name {
+            margin-top: 15px;
+        }
+
+        .result-inline-details .definition-panel {
+            margin: 13px 0;
+        }
+
+        .result-inline-details .behavior-summary {
+            margin: 0;
+        }
+
+        .result-inline-details .behavior-summary h3 {
+            text-align: left;
+        }
+
+        .result-inline-details .behavior-chips {
+            justify-content: flex-start;
+        }
+
+        .starter-box {
+            margin-bottom: 18px;
+        }
+
+        .starter-inline-details {
+            margin-top: 15px;
+        }
+
+        .starter-inline-details .why-box {
+            margin: 0 0 12px;
+        }
+
+        .starter-inline-details .practice-note {
+            margin: 0;
+        }
+
+        .continuation-section {
+            margin: 0 0 20px;
+            padding: 24px;
+            border: 1.5px solid rgba(228, 221, 212, 0.95);
+            border-radius: 20px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,249,247,0.96));
+            box-shadow: 0 10px 24px rgba(102, 109, 136, 0.06);
+        }
+
+        .continuation-section .advice-grid {
+            margin-bottom: 0;
+        }
+
+        .result-actions {
+            margin-top: 24px;
+        }
+
+        @media (max-width: 700px) {
+            .selection-trail {
+                margin-bottom: 14px;
+            }
+
+            .selection-trail-items {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+
+            .selection-trail-items > i {
+                display: none;
+            }
+
+            .selection-trail-item {
+                display: grid;
+                grid-template-columns: auto minmax(0, 1fr);
+                gap: 7px;
+            }
+
+            .primary-result-block {
+                padding: 21px 17px 16px;
+            }
+
+            .primary-result-block .result-heading h2 {
+                font-size: 1.28rem;
+            }
+
+            .continuation-section {
+                padding: 20px 16px;
+            }
+
+            .result-inline-details .professional-capability-name {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
     </style>
 </head>
 <body class="locked">
@@ -1732,25 +1956,65 @@
         <section id="step3" class="step">
             <button class="btn-back" type="button" onclick="goToStep(2)">← 換一個更像我的情況</button>
 
-            <section class="result-summary-panel" aria-labelledby="result-title">
+            <div class="selection-trail" aria-label="您剛才的三層選擇">
+                <span class="selection-trail-heading">您剛才的三層選擇</span>
+                <div class="selection-trail-items">
+                    <span class="selection-trail-item">
+                        <b>第 1 層｜困擾類別</b>
+                        <span id="trail-category"></span>
+                    </span>
+                    <i aria-hidden="true">›</i>
+                    <span class="selection-trail-item">
+                        <b>第 2 層｜工作狀態</b>
+                        <span id="trail-capability"></span>
+                    </span>
+                    <i aria-hidden="true">›</i>
+                    <span class="selection-trail-item">
+                        <b>第 3 層｜想先改變</b>
+                        <span id="trail-painpoint"></span>
+                    </span>
+                </div>
+            </div>
+
+            <section class="result-summary-panel primary-result-block" aria-labelledby="result-title">
                 <div class="result-heading">
-                    <span class="eyebrow">這個情況，可能透露一個值得練習的方向</span>
+                    <span class="eyebrow">您最想先改變的情況</span>
                     <h2 id="result-title"></h2>
-                    <p>它不代表您一直都是這樣，也不是在判斷您能力好不好；只是從最近的工作狀態，找一個最容易開始改變的地方。</p>
                 </div>
 
-                <div class="result-reveal">
-                    <span class="reveal-label">您現在比較值得練的是</span>
-                    <h3><strong id="result-behavior"></strong></h3>
-                    <p>這是「<strong id="result-capability"></strong>」職能中的一項行為。</p>
-                    <p class="reveal-note">這只代表您選擇的這個情況和這項行為較有關，不代表您的整體職能不足。</p>
-                </div>
+                <details class="inline-more-details result-inline-details">
+                    <summary>想了解這個情況，再展開</summary>
+                    <div class="inline-more-body">
+                        <p class="result-context-note">它不代表您一直都是這樣，也不是在判斷您能力好不好；只是從最近的工作狀態，找一個最容易開始改變的地方。</p>
+
+                        <div class="result-reveal">
+                            <span class="reveal-label">您現在比較值得練的是</span>
+                            <h3><strong id="result-behavior"></strong></h3>
+                            <p>這是「<strong id="result-capability"></strong>」職能中的一項行為。</p>
+                            <p class="reveal-note">這只代表您選擇的這個情況和這項行為較有關，不代表您的整體職能不足。</p>
+                        </div>
+
+                        <aside class="diagnosis-box" aria-labelledby="diagnosis-title">
+                            <h3 id="diagnosis-title">這個情況常怎麼發生？</h3>
+                            <p id="diagnosis-text"></p>
+                        </aside>
+
+                        <div class="professional-divider" aria-hidden="true"></div>
+                        <div class="professional-capability-name">
+                            <span>職能名稱</span>
+                            <strong id="professional-capability-name"></strong>
+                        </div>
+                        <div class="definition-panel">
+                            <h3 id="definition-title">正式職能定義</h3>
+                            <p id="definition-text"></p>
+                        </div>
+                        <div class="behavior-summary">
+                            <h3>完整行為指標</h3>
+                            <div class="behavior-chips" id="behavior-chips"></div>
+                        </div>
+                    </div>
+                </details>
             </section>
-
-            <aside class="diagnosis-box" aria-labelledby="diagnosis-title">
-                <h3 id="diagnosis-title">這個情況常怎麼發生？</h3>
-                <p id="diagnosis-text"></p>
-            </aside>
 
             <section class="starter-box" aria-labelledby="starter-title">
                 <div class="starter-label">立即先試</div>
@@ -1760,6 +2024,19 @@
                 </div>
                 <p id="starter-detail"></p>
                 <div class="starter-done"><strong>怎樣算完成：</strong><span id="starter-done"></span></div>
+
+                <details class="inline-more-details starter-inline-details">
+                    <summary>想知道為什麼這一步有用，再展開</summary>
+                    <div class="inline-more-body">
+                        <div class="why-box">
+                            <h3>這一步為什麼有用？</h3>
+                            <p id="starter-why"></p>
+                        </div>
+                        <div class="practice-note">
+                            <strong>不用一次改很多：</strong>先完成一個現在就能準備或練習的小動作，就已經開始改變。覺得有幫助，再從下一區挑一項持續練習；進步不是從此不再卡住，而是比以前更快找到下一步。
+                        </div>
+                    </div>
+                </details>
             </section>
 
             <section class="continuation-section" aria-labelledby="advice-title">
@@ -1770,40 +2047,7 @@
                 <div class="advice-grid" id="advice-grid"></div>
             </section>
 
-            <details class="support-details">
-                <summary>
-                    <span class="support-summary-title">想多了解再看</span>
-                    <span class="support-summary-text">這一步為什麼有用？也不用一次改很多</span>
-                </summary>
-                <div class="support-details-body">
-                    <div class="why-box">
-                        <h3>這一步為什麼有用？</h3>
-                        <p id="starter-why"></p>
-                    </div>
-
-                    <div class="practice-note">
-                        <strong>不用一次改很多：</strong>先完成一個現在就能準備或練習的小動作，就已經開始改變。覺得有幫助，再從上面挑一項持續練習；進步不是從此不再卡住，而是比以前更快找到下一步。
-                    </div>
-                </div>
-            </details>
-
-            <details class="professional-details">
-                <summary>查看正式職能定義與完整行為指標</summary>
-                <div class="professional-capability-name">
-                    <span>職能名稱</span>
-                    <strong id="professional-capability-name"></strong>
-                </div>
-                <div class="definition-panel">
-                    <h3 id="definition-title">正式職能定義</h3>
-                    <p id="definition-text"></p>
-                </div>
-                <div class="behavior-summary">
-                    <h3>完整行為指標</h3>
-                    <div class="behavior-chips" id="behavior-chips"></div>
-                </div>
-            </details>
-
-            <div class="button-row" style="margin-top: 26px;">
+            <div class="button-row result-actions">
                 <button class="btn-secondary" type="button" onclick="goToStep(2)">換一個情況</button>
                 <button class="btn-primary" type="button" onclick="resetExploration()">重新探索其他狀態</button>
             </div>
@@ -1880,7 +2124,7 @@
                 ],
                 "starter": {
                     "title": "把一個團隊卡點改寫成可推進的下一步",
-                    "time": "先花 7 分鐘＋1 個工作日內提出",
+                    "time": "先花 7 分鐘整理",
                     "detail": "選一件目前卡住的團隊工作，寫下障礙、需要誰協助、您能先做什麼與期望時間；在一個工作日內向相關人提出或直接完成自己能做的第一步。",
                     "done": "團隊已確認下一步、負責人與時間，或原本的一個障礙已實際往前。"
                 }
@@ -1918,7 +2162,7 @@
                 ],
                 "starter": {
                     "title": "為下一次討論準備三個具體邀請問題",
-                    "time": "先花 5 分鐘＋下一次討論使用",
+                    "time": "先花 5 分鐘準備",
                     "detail": "針對即將討論的議題，分別準備給執行者、使用者與支援者的具體問題；下一次討論時至少實際邀請一位尚未發言或專長未被用到的成員。",
                     "done": "取得一個原本沒有出現的觀點，且其中至少一項被放進方案、任務或後續查證。"
                 }
@@ -1956,7 +2200,7 @@
                 ],
                 "starter": {
                     "title": "把一則重要訊息整理成三段式更新",
-                    "time": "先花 6 分鐘＋需要行動前送出",
+                    "time": "先花 6 分鐘整理",
                     "detail": "選一則會影響團隊的資訊，寫成「發生什麼、影響誰、需要做什麼」，在相關人需要行動前實際送出，並請最受影響的人確認下一步。",
                     "done": "訊息已送達，且至少一位關鍵成員能正確說出自己接下來要做什麼。"
                 }
@@ -1994,7 +2238,7 @@
                 ],
                 "starter": {
                     "title": "選出一項可能延誤的承諾，立即提早處理",
-                    "time": "先花 6 分鐘＋1 個工作日內行動",
+                    "time": "先花 6 分鐘盤點",
                     "detail": "寫下原承諾、目前進度、可能影響與可行補救；若確實有風險，在一個工作日內主動向受影響的人說明並重新確認下一次回報或交付時間。",
                     "done": "對方已收到風險與補救資訊，並能依新的時間或安排採取行動。"
                 }
@@ -2032,7 +2276,7 @@
                 ],
                 "starter": {
                     "title": "把一個常被省略的規範放回下一次工作流程",
-                    "time": "先花 6 分鐘＋下一次執行時使用",
+                    "time": "先花 6 分鐘設定",
                     "detail": "選一個忙起來最容易跳過的步驟，確認它保護的品質或風險，將它改成勾選、範本或系統提醒，並在下一次實際工作中使用一次。",
                     "done": "下一次工作確實完成該檢查，並留下可回看的紀錄或發現。"
                 }
@@ -2121,7 +2365,7 @@
                 ],
                 "starter": {
                     "title": "把一項需要支持的任務寫成三句開場",
-                    "time": "先花 6 分鐘＋下一次溝通使用",
+                    "time": "先花 6 分鐘準備",
                     "detail": "寫下「為什麼現在要做、希望改善什麼、對對方有什麼意義」三句開場；在下一次爭取支持時實際說出，並詢問對方最在意的成果或疑慮。",
                     "done": "對方能說出這件事的重要性，且您已取得一項能調整後續說明的關注點。"
                 }
@@ -2159,8 +2403,8 @@
                 ],
                 "starter": {
                     "title": "把目前爭議整理成一個共同問題句",
-                    "time": "先花 7 分鐘＋下一次討論先對齊",
-                    "detail": "整理已知事實、雙方不同理解與真正要決定的事情，濃縮成一個沒有預設答案的共同問題句；下一次討論開始時請雙方確認。",
+                    "time": "先花 7 分鐘整理",
+                    "detail": "整理已知事實、雙方不同理解與真正要決定的事情，濃縮成一個沒有預設答案的共同問題句；下一次討論開始時，再請雙方確認這是不是目前真正要處理的問題。",
                     "done": "參與者同意目前真正要處理的問題及本次決策範圍。"
                 }
             },
@@ -2197,7 +2441,7 @@
                 ],
                 "starter": {
                     "title": "先把自己的方案放下，寫三個想問對方的問題",
-                    "time": "先花 5 分鐘＋下一次討論實際提問",
+                    "time": "先花 5 分鐘準備",
                     "detail": "針對正在爭取認同的方案，準備「最在意、最擔心、怎樣才願意支持」三個問題；下一次討論先問再說，並把至少一項回答放進方案。",
                     "done": "方案已因對方的觀點產生一項具體新增、修正或驗證。"
                 }
@@ -2235,7 +2479,7 @@
                 ],
                 "starter": {
                     "title": "列出一位關鍵對象的『好處、顧慮、可接受條件』",
-                    "time": "先花 8 分鐘＋正式討論前溝通",
+                    "time": "先花 8 分鐘整理",
                     "detail": "選一位尚未完全支持的關鍵對象，整理他可能在意的好處、顧慮與可接受條件；正式討論前先和他談一次，依真實回應調整說法、支援或方案。",
                     "done": "已取得對方真正的疑慮或支持條件，並完成一項對應調整。"
                 }
@@ -2273,7 +2517,7 @@
                 ],
                 "starter": {
                     "title": "替最近一次討論補寫四欄結論",
-                    "time": "先花 6 分鐘＋30 分鐘內確認",
+                    "time": "先花 6 分鐘補寫",
                     "detail": "替最近一次討論補上「已決定、未決定、下一步、負責人與期限」，在三十分鐘內傳給參與者確認或在下一次會議結束前口頭對齊。",
                     "done": "關鍵參與者確認同一組結論，每個行動都有負責人與時間。"
                 }
@@ -2311,7 +2555,7 @@
                 ],
                 "starter": {
                     "title": "把一句容易讓人防衛的話改寫成尊重版本",
-                    "time": "先花 5 分鐘＋下一次高張力對話使用",
+                    "time": "先花 5 分鐘改寫",
                     "detail": "把一句要求或反駁改成「先認同合理處、說明自己的關切、邀請一起找做法」；下一次意見不同時實際使用。",
                     "done": "對話沒有停在防衛或爭辯，雙方至少形成一個可繼續合作的下一步。"
                 }
@@ -2405,7 +2649,7 @@
                 ],
                 "starter": {
                     "title": "把一個表面問題改寫成真正要做的決定",
-                    "time": "先花 7 分鐘＋1 個工作日內確認",
+                    "time": "先花 7 分鐘釐清",
                     "detail": "寫下目前症狀、期望狀態、差距、影響及這次真正要做的判斷；再向一位相關人確認問題是否界定正確，並決定要立即處理、持續觀察或暫不投入。",
                     "done": "相關人同意真正的決策問題，且已有明確的處理層級與下一步。"
                 }
@@ -2443,7 +2687,7 @@
                 ],
                 "starter": {
                     "title": "列出最可能改變決定的三個未知",
-                    "time": "先花 6 分鐘＋1 個工作日內查一項",
+                    "time": "先花 6 分鐘盤點",
                     "detail": "寫下最可能改變選擇的三個未知與資料來源，先查優先度最高的一項，且重要事實至少用兩種來源交叉確認。",
                     "done": "至少一個關鍵未知已被確認、排除或縮小，決策的不確定性實際降低。"
                 }
@@ -2481,7 +2725,7 @@
                 ],
                 "starter": {
                     "title": "把三種資料放到同一張『發現—證據—假設』表",
-                    "time": "先花 8 分鐘＋請 1 人挑戰結論",
+                    "time": "先花 8 分鐘整理",
                     "detail": "把一項數據、一則回饋與一個現場觀察放在共同時間或流程上，圈出重複訊號，標記事實、關聯與假設；請一位相關人挑戰您的初步結論。",
                     "done": "形成一個由多種資料支持的結論，並依他人檢視完成確認或修正。"
                 }
@@ -2519,7 +2763,7 @@
                 ],
                 "starter": {
                     "title": "為同一個結果提出三條真正不同的路徑",
-                    "time": "先花 8 分鐘＋邀請 1 人挑戰",
+                    "time": "先花 8 分鐘發想",
                     "detail": "針對同一個期待結果，分別從流程、資訊或工具、資源或分工提出三個方案，寫出必要條件；再請一位執行者或受影響者指出哪個方案最不可行及原因。",
                     "done": "留下三個機制不同、具必要條件，並經實務觀點修正過的候選方案。"
                 }
@@ -2557,7 +2801,7 @@
                 ],
                 "starter": {
                     "title": "先用必要條件淘汰，再以證據比較兩個方案",
-                    "time": "先花 9 分鐘＋做出暫定選擇",
+                    "time": "先花 9 分鐘比較",
                     "detail": "列出一至兩個不能違反的必要條件及四個比較標準，替兩個方案記錄證據；無法確認的項目標示為待查，完成一次暫定選擇或指出唯一需要補的關鍵證據。",
                     "done": "能清楚說明為何暫選此方案，或哪一項證據取得後就能決定，而不是只剩個人感覺。"
                 }
@@ -2595,7 +2839,7 @@
                 ],
                 "starter": {
                     "title": "替一項拖延中的決策設定『停止分析條件』",
-                    "time": "先花 6 分鐘＋期限內啟動第一步",
+                    "time": "先花 6 分鐘設定",
                     "detail": "設定最晚決定時間、真正會改變選擇的兩項資訊，以及到期仍不完整時的可逆小步驟；到期限就做出決定並啟動第一步。",
                     "done": "決策不再無限等待，且負責人、第一個動作與檢查日期已開始運作。"
                 }
@@ -2633,7 +2877,7 @@
                 ],
                 "starter": {
                     "title": "畫出一項決策的四種參與角色",
-                    "time": "先花 7 分鐘＋決定前聯絡 1 人",
+                    "time": "先花 7 分鐘盤點",
                     "detail": "列出提供資料者、受影響者、執行者與最後決定者，找出目前漏掉的一位；在做決定前主動取得他的資訊或影響評估。",
                     "done": "方案已納入一項原本缺少的實務資訊，且關鍵人理解自己如何參與最後決定。"
                 }
@@ -2713,7 +2957,7 @@
                 ],
                 "starter": {
                     "title": "把一個『很不順』改寫成可衡量差距",
-                    "time": "先花 7 分鐘＋取得 1 筆現況資料",
+                    "time": "先花 7 分鐘釐清",
                     "detail": "寫下理想標準與目前流程在時間、品質、成本或體驗上的差距，再實際走查一次或取得一筆現況數據。",
                     "done": "差距不只停在感覺，而有一個可觀察標準與一筆真實現況證據。"
                 }
@@ -2751,7 +2995,7 @@
                 ],
                 "starter": {
                     "title": "比較一次出問題與沒出問題的情況，找出真實差異",
-                    "time": "先花 10 分鐘＋1 個工作日內查證",
+                    "time": "先花 10 分鐘比較",
                     "detail": "選一個重複問題，找一次有發生及一次未發生的案例，比較流程、資訊、工具、人員與環境；圈出最關鍵差異，並在一個工作日內用紀錄、觀察或詢問相關人確認。",
                     "done": "找到一個有實際證據支持的可能原因，並知道下一步要如何進一步驗證或改善。"
                 }
@@ -2789,7 +3033,7 @@
                 ],
                 "starter": {
                     "title": "針對同一根因提出三種改善路徑",
-                    "time": "先花 8 分鐘＋請執行者檢視",
+                    "time": "先花 8 分鐘發想",
                     "detail": "針對同一個已確認原因，從流程簡化、資訊改善及工具或資源調整提出三條路，寫出利弊；請一位實際執行者指出負擔與可行性。",
                     "done": "三個方案都對準同一原因，並依實務回饋選出或修正一個較適合的方案。"
                 }
@@ -2827,7 +3071,7 @@
                 ],
                 "starter": {
                     "title": "設計並啟動一個能取得證據的最小試行",
-                    "time": "先花 8 分鐘＋下一個適用時段啟動",
+                    "time": "先花 8 分鐘設計",
                     "detail": "寫下改善前基準、試行對象、期間、要驗證的假設、成功指標與回饋方式；在下一個適用工作時段啟動第一輪小範圍試行。",
                     "done": "試行已實際開始，並取得第一筆基準、結果或使用者回饋，而不只完成計畫。"
                 }
@@ -2910,7 +3154,7 @@
                 ],
                 "starter": {
                     "title": "把目前工作排成『最重要三項＋暫緩一項』",
-                    "time": "先花 6 分鐘＋下一時段照新順序做",
+                    "time": "先花 6 分鐘排序",
                     "detail": "依成果影響、期限與他人依賴選出最重要三項，明確暫緩一項；把第一項排進下一個工作時段，必要時向受影響的人說明取捨。",
                     "done": "下一個工作時段已照新順序推進關鍵任務，且暫緩事項沒有默默同時堆上來。"
                 }
@@ -2948,7 +3192,7 @@
                 ],
                 "starter": {
                     "title": "把一個大任務拆成五個可交付細項",
-                    "time": "先花 8 分鐘＋確認 1 項責任或資源",
+                    "time": "先花 8 分鐘拆解",
                     "detail": "把一個大任務拆成可交付細項，標出每項負責人、前置條件與資源；立即向一位相關人確認分工或資源可用時間。",
                     "done": "至少一項責任或資源已獲確認，任務不再只停在大方向。"
                 }
@@ -2986,7 +3230,7 @@
                 ],
                 "starter": {
                     "title": "替一項工作排出中途檢查、協作日期與緩衝",
-                    "time": "先花 8 分鐘＋放進日曆確認",
+                    "time": "先花 8 分鐘排程",
                     "detail": "從截止日往前排一至三個檢查點、協作日期與緩衝，把它們放進日曆，並向一位關鍵協作者確認時間是否衝突。",
                     "done": "時程已落到實際日期，且至少一項人員或相依衝突已被確認或調整。"
                 }
@@ -3024,7 +3268,7 @@
                 ],
                 "starter": {
                     "title": "選一項現成資源，立即用來減少自己承擔",
-                    "time": "先花 6 分鐘＋2 個工作日內啟用",
+                    "time": "先花 6 分鐘盤點",
                     "detail": "從人力、流程、工具、單位或外部夥伴中找出最能降低時間或風險的一項，在兩個工作日內完成一次授權、套用範本、啟用工具或協作請求。",
                     "done": "資源已被實際啟用，且至少減少一段重做、等待或由自己單獨承擔的工作。"
                 }
@@ -3062,7 +3306,7 @@
                 ],
                 "starter": {
                     "title": "排定並完成下一個四十五分鐘專注時段",
-                    "time": "先花 3 分鐘排定＋下一時段完成",
+                    "time": "先花 3 分鐘排定",
                     "detail": "選一項高優先任務，排定開始與結束時間，關閉非必要通知，寫好被打斷時的回覆方式；到時實際完成一次不切換的專注工作。",
                     "done": "不只日曆有安排，而是完成一段專注時段，且關鍵工作有一項可看見的進展。"
                 }
@@ -3145,7 +3389,7 @@
                 ],
                 "starter": {
                     "title": "把一項顧客要求往下追問三層",
-                    "time": "先花 5 分鐘＋下一次顧客對話提問",
+                    "time": "先花 5 分鐘準備",
                     "detail": "準備追問顧客情境、真正困擾與期待結果的三個問題；下一次對話實際詢問，再用自己的話重述需求請顧客確認。",
                     "done": "顧客確認您理解的不是表面要求，而是他的情境、問題與期待結果。"
                 }
@@ -3183,7 +3427,7 @@
                 ],
                 "starter": {
                     "title": "把一段專業說明改成顧客聽得懂的三句話",
-                    "time": "先花 6 分鐘＋下一次說明確認理解",
+                    "time": "先花 6 分鐘改寫",
                     "detail": "把專業內容改成「目前狀況、可選做法、各自影響」三句話，下一次向顧客說明後，請他用自己的話說出選擇或下一步。",
                     "done": "顧客能正確說出目前狀況、選項及自己接下來要做什麼。"
                 }
@@ -3221,7 +3465,7 @@
                 ],
                 "starter": {
                     "title": "為一段顧客對話準備「認同＋邀請」兩句話",
-                    "time": "先花 5 分鐘＋下一次對話實際使用",
+                    "time": "先花 5 分鐘準備",
                     "detail": "準備一句承認顧客處境的話，以及一句邀請他說明最在意事項的問題；下一次對話先回應處境，再進入解法。",
                     "done": "顧客願意說出真正關切或優先事項，您也已依此調整處理方式。"
                 }
@@ -3259,7 +3503,7 @@
                 ],
                 "starter": {
                     "title": "立即送出一則讓顧客安心的承接回覆",
-                    "time": "先花 5 分鐘＋約定時限內送出",
+                    "time": "先花 5 分鐘整理",
                     "detail": "針對一項尚未有完整答案的需求，寫下「已收到、由誰處理、目前確認事項、下一次更新時間」，並在約定時限內實際回覆顧客。",
                     "done": "顧客已收到訊息，知道事情有人處理及下一次何時會更新。"
                 }
@@ -3297,7 +3541,7 @@
                 ],
                 "starter": {
                     "title": "把一項模糊保證改成可信的承諾界線",
-                    "time": "先花 6 分鐘＋下一次回覆時使用",
+                    "time": "先花 6 分鐘釐清",
                     "detail": "寫下目前能確定的內容、仍需確認的條件及正式答覆時間；在下一次顧客回覆中實際使用這段說法，不先保證尚未確認的結果。",
                     "done": "顧客已理解可承諾的範圍與下一次答覆時間，後續不需因承諾過頭再收回。"
                 }
@@ -3335,7 +3579,7 @@
                 ],
                 "starter": {
                     "title": "設計兩個能得到具體答案的回饋問題",
-                    "time": "先花 5 分鐘＋本週完成 1 次蒐集",
+                    "time": "先花 5 分鐘設計",
                     "detail": "針對一個關鍵接觸點設計兩個具體問題，決定逐案或抽樣方式；本週向至少一位顧客實際詢問，並回覆您將如何處理其中一項意見。",
                     "done": "取得一項可行動回饋，且顧客知道他的意見被如何採用、查證或說明。"
                 }
@@ -3404,7 +3648,7 @@
                 ],
                 "starter": {
                     "title": "直接用目前課程做一次主動參與",
-                    "time": "先花 5 分鐘＋目前或下一次學習完成",
+                    "time": "先花 5 分鐘選定",
                     "detail": "帶著一個真實工作問題，從提問、操作、討論或小練習中實際完成一項，不只寫下準備。",
                     "done": "留下問題與答案、一次操作結果或一個可展示的練習成果。"
                 }
@@ -3442,7 +3686,7 @@
                 ],
                 "starter": {
                     "title": "把剛才的內容留下自己的版本",
-                    "time": "先花 7 分鐘＋完成一次自我驗證",
+                    "time": "先花 7 分鐘整理",
                     "detail": "不看教材，用自己的話說明核心內容或獨立操作一次，再補上工作例子；若可以，說給一位同事聽或用成果自我檢查。",
                     "done": "能指出自己確實掌握的一項內容及仍需補強的一個缺口。"
                 }
@@ -3480,7 +3724,7 @@
                 ],
                 "starter": {
                     "title": "用一張紙整理成「目的、三個概念、例子」",
-                    "time": "先花 8 分鐘＋用自己的話說一次",
+                    "time": "先花 8 分鐘整理",
                     "detail": "整理成「目的、三個核心概念、工作例子」一頁內容，接著不看原資料向自己或一位同事說明一次。",
                     "done": "能用自己的架構說清楚，並依說明過程找出或修正一個理解缺口。"
                 }
@@ -3518,7 +3762,7 @@
                 ],
                 "starter": {
                     "title": "替一個新方法指定四十八小時內的使用情境",
-                    "time": "先花 5 分鐘＋48 小時內實際用",
+                    "time": "先花 5 分鐘指定",
                     "detail": "選一個新方法，指定真實工作場景、時間與第一步；在四十八小時內完成一次低風險應用並記下結果。",
                     "done": "新方法已在真實工作中出現一次，且留下有幫助之處與下一次調整。"
                 }
@@ -3556,7 +3800,7 @@
                 ],
                 "starter": {
                     "title": "把一次不順拆成「有效、卡住、下一次只改一點」",
-                    "time": "先花 6 分鐘＋7 天內再用一次",
+                    "time": "先花 6 分鐘回顧",
                     "detail": "把第一次經驗分成有效、卡住與下一次只改一點，保留核心方法；七天內在相近情境再使用一次。",
                     "done": "已完成第二次應用，並能比較調整前後哪一點變得更順或仍需修正。"
                 }
@@ -3626,7 +3870,7 @@
                 ],
                 "starter": {
                     "title": "替一個常觀望的情境寫好第一句回應",
-                    "time": "先花 5 分鐘＋下一次合理時點回應",
+                    "time": "先花 5 分鐘準備",
                     "detail": "寫好「我先做什麼、何時回報」的第一句；下一次看到權限清楚的問題時，在職務或組織約定的回應時限內實際承接。",
                     "done": "相關人及時知道問題已由誰先處理、下一步及回報時間。"
                 }
@@ -3664,7 +3908,7 @@
                 ],
                 "starter": {
                     "title": "把一項模糊任務寫成「理解、建議、風險、確認」",
-                    "time": "先花 7 分鐘＋先完成 1 個低風險步驟",
+                    "time": "先花 7 分鐘釐清",
                     "detail": "寫下目前理解、建議做法、風險與需要確認的界線；在請示前先完成一個可逆、低風險的資料整理或準備。",
                     "done": "您不是空手等待指示，而是帶著初步判斷、已完成步驟與清楚問題去確認。"
                 }
@@ -3702,7 +3946,7 @@
                 ],
                 "starter": {
                     "title": "把一個想法寫成三句可討論的提案",
-                    "time": "先花 6 分鐘＋2 個工作日內提出",
+                    "time": "先花 6 分鐘整理",
                     "detail": "將想法整理成「問題、建議、預期好處與需要討論的風險」，在兩個工作日內向相關人提出。",
                     "done": "對方已實際回應，想法進入採用、修正、試行或暫緩中的一個明確狀態。"
                 }
@@ -3740,7 +3984,7 @@
                 ],
                 "starter": {
                     "title": "替一個改善機會排定四十八小時內的第一步",
-                    "time": "先花 6 分鐘＋48 小時內執行第一步",
+                    "time": "先花 6 分鐘排定",
                     "detail": "選一個權限清楚、風險可控的改善機會，排定四十八小時內的第一個動作並實際完成。",
                     "done": "改善機會已產生第一筆資料、一次詢問、一個小試做或一項具體進展。"
                 }
@@ -3778,7 +4022,7 @@
                 ],
                 "starter": {
                     "title": "先替一項交付多想對方的下一步",
-                    "time": "先花 6 分鐘＋本次交付一起提供",
+                    "time": "先花 6 分鐘補強",
                     "detail": "站在接收者角度思考交付後最可能需要的下一步，補上一項高價值的提醒、選項、風險或可直接使用的附件。",
                     "done": "接收者能直接使用您多補的一步，或因此減少一次追問、等待或重工。"
                 }
@@ -3855,7 +4099,7 @@
                 ],
                 "starter": {
                     "title": "把心中的高標準寫成三個可重複做法",
-                    "time": "先花 7 分鐘＋下一次工作實際套用",
+                    "time": "先花 7 分鐘具體化",
                     "detail": "選一類常做工作，寫出三個高標準及對應做法或檢查點；下一次真實工作中逐項使用。",
                     "done": "成果實際通過三項標準，或清楚發現一項需要補強的流程。"
                 }
@@ -3893,7 +4137,7 @@
                 ],
                 "starter": {
                     "title": "向接收者確認三項真正重要的品質，立即補上一個差距",
-                    "time": "先花 8 分鐘＋下一次交付前完成",
+                    "time": "先花 8 分鐘盤點",
                     "detail": "選一項近期成果，向實際接收者或依正式要求確認最重要的三項品質，對照目前成果找出一項差距；在下一次交付前完成補強或清楚說明限制。",
                     "done": "接收者確認關鍵品質已被理解，且至少一項會影響使用結果的差距已改善。"
                 }
@@ -3931,7 +4175,7 @@
                 ],
                 "starter": {
                     "title": "先分清楚「不能放掉」與「可以調整」",
-                    "time": "先花 7 分鐘＋下一次取捨時說清楚",
+                    "time": "先花 7 分鐘釐清",
                     "detail": "寫下一個不能犧牲的品質底線及可調整的範圍、方法、資源或時程；下一次遇到壓力時和相關人用這個界線做取捨。",
                     "done": "關鍵品質被保留，且至少用調方法、縮範圍、調時程或求援取代直接降標準。"
                 }
@@ -3969,7 +4213,7 @@
                 ],
                 "starter": {
                     "title": "把一次錯誤改寫成四句負責任的回應",
-                    "time": "先花 6 分鐘＋1 個工作日內完成第一個補救",
+                    "time": "先花 6 分鐘整理",
                     "detail": "把一次錯誤整理成「發生什麼、影響什麼、我負責什麼、接下來怎麼補救」，向受影響者說明並先完成一項補救。",
                     "done": "受影響者知道真實情況、補救與更新時間，且第一個影響已開始被處理。"
                 }
@@ -4007,7 +4251,7 @@
                 ],
                 "starter": {
                     "title": "寫好一次不替別人默默補上的責任對話",
-                    "time": "先花 7 分鐘＋2 個工作日內進行對話",
+                    "time": "先花 7 分鐘準備",
                     "detail": "寫下原承諾、目前落差、造成影響、對方下一步與更新時間；在兩個工作日內和當事人進行清楚但不羞辱人的責任對話。",
                     "done": "對方已說出自己的責任、下一步與回報時間，而不是由您再次默默補位。"
                 }
@@ -4091,7 +4335,7 @@
                 ],
                 "starter": {
                     "title": "把一個熟悉做法拆成「事實」與「假設」",
-                    "time": "先花 7 分鐘＋1 個工作日內驗證一項假設",
+                    "time": "先花 7 分鐘拆解",
                     "detail": "將熟悉做法分成事實、沿用假設與最值得確認的一點；用資料或詢問相關人驗證一項假設，再決定保留或更新一個做法。",
                     "done": "至少一個原本理所當然的前提得到證據，並產生保留或改變做法的明確決定。"
                 }
@@ -4129,7 +4373,7 @@
                 ],
                 "starter": {
                     "title": "列出三個平常不會主動詢問的想法來源",
-                    "time": "先花 5 分鐘＋7 天內取得不同輸入",
+                    "time": "先花 5 分鐘盤點",
                     "detail": "列出三個平常不會主動詢問的角色、產業或知識來源，七天內向其中一個提問或查找案例，將一個核心原則轉成小做法。",
                     "done": "取得一個不同觀點，並形成或測試一個原本不會想到的新做法。"
                 }
@@ -4167,7 +4411,7 @@
                 ],
                 "starter": {
                     "title": "為同一個問題再寫三種做法",
-                    "time": "先花 5 分鐘＋帶 3 個選項進入討論",
+                    "time": "先花 5 分鐘發想",
                     "detail": "除第一個答案外再寫三種做法，先不評分；下一次討論時至少把三個不同選項一起提出，而不是只帶一個答案。",
                     "done": "至少一個原本不會出現的選項進入後續比較、組合或測試。"
                 }
@@ -4205,7 +4449,7 @@
                 ],
                 "starter": {
                     "title": "用四項創新條件選一個點子，立即做最小驗證",
-                    "time": "先花 9 分鐘＋7 天內驗證",
+                    "time": "先花 9 分鐘比較",
                     "detail": "比較兩個新點子的差異性、問題相關性、可行性與可驗證性，選出最值得先試的一個；設計可在七天內完成的草圖、訪談、模擬或小測試。",
                     "done": "已選出兼具不同做法與重要價值的點子，且取得或排定一項真實驗證證據。"
                 }
@@ -4243,7 +4487,7 @@
                 ],
                 "starter": {
                     "title": "把點子改寫成「幫誰改善什麼」",
-                    "time": "先花 5 分鐘＋向 1 位使用者確認",
+                    "time": "先花 5 分鐘改寫",
                     "detail": "把點子改寫成「幫誰改善什麼、期待哪個結果」，向一位真正會使用或受影響的人確認問題是否重要，再依回饋調整、保留或停止。",
                     "done": "對象、問題與期待結果已獲真實回饋，點子也完成一項對應修正或取捨。"
                 }
@@ -4316,7 +4560,7 @@
                 ],
                 "starter": {
                     "title": "把最近一項變動改寫成三個確認問題",
-                    "time": "先花 6 分鐘＋1 個工作日內詢問",
+                    "time": "先花 6 分鐘整理",
                     "detail": "把變動改寫成「為什麼改、影響什麼、目前先做什麼」三個問題，向正式來源或負責人確認。",
                     "done": "能用自己的話說清楚改變目的、影響範圍及眼前第一步。"
                 }
@@ -4354,7 +4598,7 @@
                 ],
                 "starter": {
                     "title": "先寫出「目前理解、先做一步、還要確認」",
-                    "time": "先花 6 分鐘＋先走 1 個低風險步驟",
+                    "time": "先花 6 分鐘釐清",
                     "detail": "寫下目前理解、可先做的一步及仍需確認的問題；先完成可逆、低風險的部分，再向相關人確認方向。",
                     "done": "工作沒有因等待全部停住，且目前理解已得到確認或及時修正。"
                 }
@@ -4392,7 +4636,7 @@
                 ],
                 "starter": {
                     "title": "寫下「麻煩、可能機會、可影響的一步」",
-                    "time": "先花 6 分鐘＋24 小時內做一個可影響步驟",
+                    "time": "先花 6 分鐘整理",
                     "detail": "承認改變帶來的實際麻煩，再寫出可能機會與自己能影響的一步；二十四小時內完成該步驟。",
                     "done": "不是只要求自己正向思考，而是已有一項能降低麻煩或取得新機會的行動。"
                 }
@@ -4430,7 +4674,7 @@
                 ],
                 "starter": {
                     "title": "把改變寫成「開始、停止、繼續」",
-                    "time": "先花 7 分鐘＋下一次工作照新做法執行",
+                    "time": "先花 7 分鐘重新設定",
                     "detail": "寫出要開始、停止與繼續的一項具體行為，下一次相同工作情境至少實際改變一個步驟。",
                     "done": "真實工作中已出現一個不同於舊做法的新行為，並記下結果。"
                 }
@@ -4468,7 +4712,7 @@
                 ],
                 "starter": {
                     "title": "為忙碌時刻寫一個「如果—那麼」提示",
-                    "time": "先花 5 分鐘＋下一次忙碌時使用",
+                    "time": "先花 5 分鐘設定",
                     "detail": "把新做法寫成「如果遇到某個忙碌觸發，我就使用某個範本、提示或步驟」，放在工作入口；下一次觸發時實際使用。",
                     "done": "忙碌情境中至少有一次沒有自動回到舊方法，而是完成預先設定的新行為。"
                 }
@@ -4543,7 +4787,7 @@
                 ],
                 "starter": {
                     "title": "找出一個最近最值得投入的改善機會",
-                    "time": "先花 8 分鐘＋7 天內確認價值",
+                    "time": "先花 8 分鐘盤點",
                     "detail": "從顧客、效率、成本、風險或成長選一項機會，寫下影響對象與可能價值；七天內向一位受影響者確認，決定推進、觀察或暫緩。",
                     "done": "機會已有真實需求或數據依據，並進入明確的推進或暫緩狀態。"
                 }
@@ -4581,7 +4825,7 @@
                 ],
                 "starter": {
                     "title": "把一項工作方向改寫成高績效目標",
-                    "time": "先花 8 分鐘＋與相關人確認",
+                    "time": "先花 8 分鐘改寫",
                     "detail": "把方向改寫成明確成果、衡量方式、挑戰幅度與期限，和主管、團隊或關鍵合作人確認是否既有價值又可追蹤。",
                     "done": "目標有共同理解的成果指標、期限與第一次檢查時間。"
                 }
@@ -4619,7 +4863,7 @@
                 ],
                 "starter": {
                     "title": "把卡關改寫成一個可重新啟動的動作",
-                    "time": "先花 6 分鐘＋24 小時內重新啟動",
+                    "time": "先花 6 分鐘釐清",
                     "detail": "寫下目前障礙、仍可控制的部分及最小下一步，排定二十四小時內的重啟時間並實際完成。",
                     "done": "卡關後已重新產生一項可看見的進展，而不是只完成新的計畫。"
                 }
@@ -4657,7 +4901,7 @@
                 ],
                 "starter": {
                     "title": "完成一張「原定、目前、差距、修正」進度表",
-                    "time": "先花 7 分鐘＋立即調整或求援",
+                    "time": "先花 7 分鐘盤點",
                     "detail": "完成「原定、目前、差距、原因、修正」進度表，依差距重新估算剩餘工作；向相關人調整優先順序、資源、範圍或時程。",
                     "done": "進度風險已被相關人看見，且至少一項調整或支援已開始執行。"
                 }
@@ -4695,7 +4939,7 @@
                 ],
                 "starter": {
                     "title": "停止一項低價值投入，把時間移回關鍵成果",
-                    "time": "先花 7 分鐘＋下一工作時段執行",
+                    "time": "先花 7 分鐘取捨",
                     "detail": "選出目前最需要推進的一項成果，找一個沒有直接推動它的會議、訊息、報表或任務，決定停止、縮短、移交或延後；把釋放的時間排給關鍵成果。",
                     "done": "一項低價值投入已被實際調整，且釋放的時間讓關鍵成果產生可看見的進展。"
                 }
@@ -4764,7 +5008,7 @@
                 ],
                 "starter": {
                     "title": "把腦中的事情全部倒出，再只圈一件",
-                    "time": "先花 5 分鐘＋立即完成第一段工作",
+                    "time": "先花 5 分鐘整理",
                     "detail": "把占住注意力的事情全部寫下，只圈一件最重要的事及第一個動作，接著完成二十至三十分鐘不切換的工作。",
                     "done": "注意力已回到一個具體步驟，且該工作產生一項可看見的進展。"
                 }
@@ -4802,7 +5046,7 @@
                 ],
                 "starter": {
                     "title": "把工作分成「先做、稍後、需求援」",
-                    "time": "先花 7 分鐘＋完成 1 個專注時段",
+                    "time": "先花 7 分鐘分類",
                     "detail": "把工作分成先做、稍後與需求援，替第一項安排三十分鐘以上的專注時段；必要時向相關人說明取捨或提出支援需求。",
                     "done": "至少一項工作穩定往前，且其他急務都有明確去向，不再全部同時進行。"
                 }
@@ -4840,7 +5084,7 @@
                 ],
                 "starter": {
                     "title": "把不確定分成「已知、待確認、可以先做」",
-                    "time": "先花 5 分鐘＋立即查證並先做一步",
+                    "time": "先花 5 分鐘分類",
                     "detail": "分成已知、待確認及可以先做三欄，立即向一位適當對象送出最重要的查證問題，同時完成一個不需等待答案的低風險步驟。",
                     "done": "一個關鍵問題已進入查證，且工作有一項沒有因不確定而停住的進展。"
                 }
@@ -4878,7 +5122,7 @@
                 ],
                 "starter": {
                     "title": "把一次壓力對話改寫成三段",
-                    "time": "先花 6 分鐘＋下一次壓力對話使用",
+                    "time": "先花 6 分鐘改寫",
                     "detail": "把一次容易失控的說法改成「事實、影響、希望的下一步」，下一次高壓溝通前先停三十秒並實際使用。",
                     "done": "對話沒有變成人格批評，雙方至少形成一個可合作的下一步。"
                 }
@@ -4916,7 +5160,7 @@
                 ],
                 "starter": {
                     "title": "同時找出一個壓力來源與一個恢復做法",
-                    "time": "先花 7 分鐘＋24 小時內做一項改變",
+                    "time": "先花 7 分鐘盤點",
                     "detail": "找出一個可調整的壓力來源與一個能恢復身心的做法，在二十四小時內完成一次降低來源或恢復行動，隔天觀察狀態。",
                     "done": "不只短暫撐過，而是完成一項環境調整或恢復行動，並能說出身心狀態是否有變化。"
                 }
@@ -5075,6 +5319,7 @@
         stress: '壓力升高時，維持不了狀態'
     };
 
+    let currentCategory = '';
     let currentCapability = '';
     let currentOptionIndex = 0;
 
@@ -5170,6 +5415,7 @@
         const category = categoryData[key];
         if (!category) return;
 
+        currentCategory = key;
         document.getElementById('category-view').hidden = true;
         document.getElementById('capability-view').hidden = false;
         document.getElementById('capability-view-question').textContent = '這一類中，哪一句更像您？';
@@ -5182,6 +5428,7 @@
     }
 
     function resetExploration() {
+        currentCategory = '';
         currentCapability = '';
         currentOptionIndex = 0;
         showCategoryHome();
@@ -5232,6 +5479,11 @@
         currentOptionIndex = optionIndex;
         const capability = capabilityData[currentCapability];
         const selected = capability.options[currentOptionIndex];
+        const category = categoryData[currentCategory];
+
+        document.getElementById('trail-category').textContent = category ? category.title : '';
+        document.getElementById('trail-capability').textContent = capability.exploreTitle;
+        document.getElementById('trail-painpoint').textContent = selected.title;
 
         document.getElementById('result-capability').textContent = capability.name;
         document.getElementById('result-title').textContent = selected.title;
