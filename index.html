@@ -1619,6 +1619,44 @@
             }
         }
 
+    
+
+        .professional-capability-name {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            margin: 17px 18px 0;
+            padding: 14px 17px;
+            border: 1px solid #dbeaf2;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #eef7fb 0%, #f8f3ff 100%);
+        }
+
+        .professional-capability-name span {
+            flex: 0 0 auto;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.82);
+            color: #708095;
+            font-size: 0.78rem;
+            font-weight: 800;
+        }
+
+        .professional-capability-name strong {
+            color: #4b5a78;
+            font-size: 1.1rem;
+            line-height: 1.45;
+        }
+
+        @media (max-width: 700px) {
+            .professional-capability-name {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 7px;
+                margin: 14px 14px 0;
+            }
+        }
+
     </style>
 </head>
 <body class="locked">
@@ -1751,6 +1789,10 @@
 
             <details class="professional-details">
                 <summary>查看正式職能定義與完整行為指標</summary>
+                <div class="professional-capability-name">
+                    <span>職能名稱</span>
+                    <strong id="professional-capability-name"></strong>
+                </div>
                 <div class="definition-panel">
                     <h3 id="definition-title">正式職能定義</h3>
                     <p id="definition-text"></p>
@@ -5151,6 +5193,7 @@
 
         document.getElementById('step2-question').textContent = data.q2;
         document.getElementById('selected-context').textContent = data.exploreTitle;
+        document.getElementById('professional-capability-name').textContent = data.name;
         document.getElementById('definition-text').textContent = data.definition;
 
         const chips = document.getElementById('behavior-chips');
