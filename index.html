@@ -1881,6 +1881,218 @@
             }
         }
 
+
+        /* 第二頁整合：以第二層小分類展開第三層具體情況 */
+        .grouped-choice-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        .capability-accordion {
+            overflow: hidden;
+            border: 1.5px solid rgba(228, 221, 212, 0.98);
+            border-radius: 20px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,249,247,0.96));
+            box-shadow: 0 10px 24px rgba(102, 109, 136, 0.06);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .capability-accordion[open] {
+            border-color: #cfe3ed;
+            background: linear-gradient(135deg, #f7fbfd 0%, #fffdfb 82%);
+            box-shadow: 0 15px 30px rgba(110, 168, 200, 0.12);
+        }
+
+        .capability-accordion > summary {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 15px;
+            align-items: center;
+            min-height: 112px;
+            padding: 20px 58px 20px 21px;
+            cursor: pointer;
+            list-style: none;
+            user-select: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .capability-accordion > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .capability-accordion > summary:hover,
+        .capability-accordion > summary:focus-visible {
+            background: rgba(238, 247, 251, 0.58);
+            outline: none;
+        }
+
+        .capability-accordion > summary::after {
+            content: '＋';
+            position: absolute;
+            right: 21px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: grid;
+            place-items: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #eef7fb, #f7f3ff);
+            color: #6f8299;
+            border: 1px solid #dbeaf2;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .capability-accordion[open] > summary {
+            border-bottom: 1px solid #e4edf1;
+        }
+
+        .capability-accordion[open] > summary::after {
+            content: '－';
+        }
+
+        .accordion-main {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .accordion-short-title {
+            display: block;
+            margin-bottom: 5px;
+            color: #537d96;
+            font-size: 1.12rem;
+            font-weight: 900;
+            line-height: 1.45;
+        }
+
+        .accordion-full-title {
+            display: block;
+            margin-bottom: 4px;
+            color: #4b5a78;
+            font-size: 0.93rem;
+            font-weight: 750;
+            line-height: 1.55;
+        }
+
+        .accordion-intro {
+            display: block;
+            color: #778394;
+            font-size: 0.87rem;
+            line-height: 1.6;
+        }
+
+        .accordion-count {
+            align-self: start;
+            margin-top: 2px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: #f2f4f6;
+            color: #7b8795;
+            font-size: 0.76rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .capability-accordion-body {
+            padding: 18px 20px 21px;
+        }
+
+        .accordion-prompt {
+            margin-bottom: 13px;
+            color: #66758a;
+            font-size: 0.91rem;
+            font-weight: 750;
+            line-height: 1.6;
+        }
+
+        .nested-painpoint-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nested-painpoint {
+            position: relative;
+            width: 100%;
+            padding: 15px 45px 15px 17px;
+            border: 1.5px solid #e4e7eb;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.96);
+            color: var(--text-main);
+            cursor: pointer;
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(91, 99, 121, 0.04);
+            transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .nested-painpoint::after {
+            content: '→';
+            position: absolute;
+            right: 17px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7894a8;
+            font-size: 1rem;
+            font-weight: 800;
+        }
+
+        .nested-painpoint:hover,
+        .nested-painpoint:focus-visible {
+            border-color: #bedbe9;
+            background: linear-gradient(135deg, #f6fbfe, #ffffff);
+            box-shadow: 0 9px 18px rgba(110, 168, 200, 0.11);
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        .nested-painpoint.is-selected {
+            border-color: #9fc9dc;
+            background: linear-gradient(135deg, #eef8fc, #ffffff);
+            box-shadow: inset 0 0 0 1px rgba(110, 168, 200, 0.12);
+        }
+
+        .nested-painpoint strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #4b5a78;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .nested-painpoint span {
+            display: block;
+            color: #748091;
+            font-size: 0.88rem;
+            line-height: 1.62;
+        }
+
+        @media (max-width: 700px) {
+            .capability-accordion > summary {
+                grid-template-columns: 1fr;
+                gap: 9px;
+                min-height: 0;
+                padding: 17px 52px 17px 16px;
+            }
+
+            .accordion-count {
+                margin-top: 0;
+            }
+
+            .capability-accordion-body {
+                padding: 15px 14px 17px;
+            }
+
+            .nested-painpoint {
+                padding: 14px 40px 14px 14px;
+            }
+        }
+
     </style>
 </head>
 <body class="locked">
@@ -1917,44 +2129,29 @@
 
     <main class="content">
         <div class="progress-strip" aria-label="探索進度">
-            <span class="active" data-step-indicator="1">1 找到近況</span>
+            <span class="active" data-step-indicator="1">1 選擇方向</span>
             <i aria-hidden="true">→</i>
-            <span data-step-indicator="2">2 選出卡點</span>
+            <span data-step-indicator="2">2 展開並選情況</span>
             <i aria-hidden="true">→</i>
-            <span data-step-indicator="3">3 看見方向</span>
+            <span data-step-indicator="3">3 看發展建議</span>
         </div>
 
         <section id="step1" class="step active">
-            <div class="step1-view" id="category-view">
-                <div class="question">最近最困擾您的，主要是哪一類？</div>
-                <p class="helper-text">先選一個最接近的方向，不用一次看完所有狀況；下一步只會出現 2～3 個選項。</p>
-                <div class="category-grid" id="category-grid"></div>
-            </div>
-
-            <div class="step1-view" id="capability-view" hidden>
-                <div class="category-selection-head">
-                    <button class="btn-back" type="button" onclick="showCategoryHome()">← 換一個類別</button>
-                    <div class="question" id="capability-view-question">這一類中，哪一句更像您？</div>
-                    <p class="helper-text" id="capability-view-helper">先看醒目的短標題，再選最接近最近工作狀態的一項。</p>
-                </div>
-                <div class="category-context" id="category-context">
-                    <strong id="category-context-title"></strong>
-                    <span id="category-context-intro"></span>
-                </div>
-                <div class="capability-choice-grid" id="capability-grid"></div>
-            </div>
+            <div class="question">最近最困擾您的，主要是哪一類？</div>
+            <p class="helper-text">先從「人、果、判、進、穩」選一個最接近的方向；下一頁會把相關情況依小分類收好，點開後直接選具體情況，不必再逐頁作答。</p>
+            <div class="category-grid" id="category-grid"></div>
         </section>
 
         <section id="step2" class="step">
-            <button class="btn-back" type="button" onclick="goToStep(1)">← 回到上一題</button>
-            <div class="question" id="step2-question">在這類狀況中，哪一句更像您？</div>
-            <p class="selected-context">您剛才選的是：<strong id="selected-context"></strong></p>
-            <p class="helper-text">不用選最嚴重的，選最近最常發生、最影響工作，或您最想先改變的一個。</p>
-            <div class="list-options" id="painpoint-list"></div>
+            <button class="btn-back" type="button" onclick="showCategoryHome()">← 換一個方向</button>
+            <div class="question" id="step2-question">哪一個具體情況最像您？</div>
+            <p class="selected-context">您先選的是：<strong id="selected-category-context"></strong></p>
+            <p class="helper-text">先點開較接近的小分類，再從展開的情況中選一個。所有選項都留在同一頁，不會再跳到另一題。</p>
+            <div class="grouped-choice-list" id="grouped-choice-list"></div>
         </section>
 
         <section id="step3" class="step">
-            <button class="btn-back" type="button" onclick="goToStep(2)">← 換一個更像我的情況</button>
+            <button class="btn-back" type="button" onclick="returnToGroupedChoices()">← 換一個更像我的情況</button>
 
             <div class="selection-trail" aria-label="您剛才的三層選擇">
                 <span class="selection-trail-heading">您剛才的三層選擇</span>
@@ -2048,7 +2245,7 @@
             </section>
 
             <div class="button-row result-actions">
-                <button class="btn-secondary" type="button" onclick="goToStep(2)">換一個情況</button>
+                <button class="btn-secondary" type="button" onclick="returnToGroupedChoices()">換一個情況</button>
                 <button class="btn-primary" type="button" onclick="resetExploration()">重新探索其他狀態</button>
             </div>
         </section>
@@ -5332,7 +5529,8 @@
         const grid = document.getElementById('category-grid');
         grid.innerHTML = '';
 
-        Object.entries(categoryData).forEach(([key, category]) => {
+        ['people', 'results', 'thinking', 'growth', 'change'].forEach((key) => {
+            const category = categoryData[key];
             const btn = document.createElement('button');
             btn.type = 'button';
             btn.className = 'category-card';
@@ -5356,7 +5554,7 @@
 
             const count = document.createElement('span');
             count.className = 'category-count';
-            count.textContent = `${category.keys.length} 個狀況`;
+            count.textContent = `${category.keys.length} 個小分類`;
 
             copy.appendChild(title);
             copy.appendChild(intro);
@@ -5368,78 +5566,96 @@
         });
     }
 
-    function renderCapabilityChoices(keys) {
-        const grid = document.getElementById('capability-grid');
-        grid.innerHTML = '';
+    function renderGroupedChoices(keys) {
+        const container = document.getElementById('grouped-choice-list');
+        container.innerHTML = '';
 
         keys.forEach((key) => {
             const data = capabilityData[key];
             if (!data) return;
 
-            const btn = document.createElement('button');
-            btn.type = 'button';
-            btn.className = 'capability-choice';
+            const details = document.createElement('details');
+            details.className = 'capability-accordion';
+            details.dataset.capabilityKey = key;
+
+            const summary = document.createElement('summary');
+
+            const main = document.createElement('span');
+            main.className = 'accordion-main';
 
             const shortTitle = document.createElement('span');
-            shortTitle.className = 'choice-short-title';
+            shortTitle.className = 'accordion-short-title';
             shortTitle.textContent = capabilityShortTitles[key] || data.exploreTitle;
 
             const fullTitle = document.createElement('span');
-            fullTitle.className = 'choice-full-title';
+            fullTitle.className = 'accordion-full-title';
             fullTitle.textContent = data.exploreTitle;
 
             const intro = document.createElement('span');
-            intro.className = 'choice-intro';
+            intro.className = 'accordion-intro';
             intro.textContent = data.exploreIntro;
 
-            const action = document.createElement('span');
-            action.className = 'choice-action';
-            action.textContent = '選這個看看 →';
+            const count = document.createElement('span');
+            count.className = 'accordion-count';
+            count.textContent = `${data.options.length} 個具體情況`;
 
-            btn.appendChild(shortTitle);
-            btn.appendChild(fullTitle);
-            btn.appendChild(intro);
-            btn.appendChild(action);
-            btn.addEventListener('click', () => selectCapability(key));
-            grid.appendChild(btn);
+            main.appendChild(shortTitle);
+            main.appendChild(fullTitle);
+            main.appendChild(intro);
+            summary.appendChild(main);
+            summary.appendChild(count);
+
+            const body = document.createElement('div');
+            body.className = 'capability-accordion-body';
+
+            const prompt = document.createElement('p');
+            prompt.className = 'accordion-prompt';
+            prompt.textContent = data.q2;
+
+            const optionList = document.createElement('div');
+            optionList.className = 'nested-painpoint-list';
+
+            data.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'nested-painpoint';
+                btn.dataset.capabilityKey = key;
+                btn.dataset.optionIndex = String(index);
+
+                const title = document.createElement('strong');
+                title.textContent = opt.title;
+
+                const desc = document.createElement('span');
+                desc.textContent = opt.desc;
+
+                btn.appendChild(title);
+                btn.appendChild(desc);
+                btn.addEventListener('click', () => selectPainpoint(key, index));
+                optionList.appendChild(btn);
+            });
+
+            body.appendChild(prompt);
+            body.appendChild(optionList);
+            details.appendChild(summary);
+            details.appendChild(body);
+
+            details.addEventListener('toggle', () => {
+                if (!details.open) return;
+                currentCapability = key;
+                container.querySelectorAll('.capability-accordion').forEach((other) => {
+                    if (other !== details) other.open = false;
+                });
+            });
+
+            container.appendChild(details);
         });
     }
 
-    function showCategoryHome(scroll = true) {
-        document.getElementById('category-view').hidden = false;
-        document.getElementById('capability-view').hidden = true;
-        goToStep(1, scroll);
-    }
-
-    function showCategory(key) {
-        const category = categoryData[key];
-        if (!category) return;
-
-        currentCategory = key;
-        document.getElementById('category-view').hidden = true;
-        document.getElementById('capability-view').hidden = false;
-        document.getElementById('capability-view-question').textContent = '這一類中，哪一句更像您？';
-        document.getElementById('capability-view-helper').textContent = '先看醒目的短標題，再選最接近最近工作狀態的一項。';
-        document.getElementById('category-context').hidden = false;
-        document.getElementById('category-context-title').textContent = category.title;
-        document.getElementById('category-context-intro').textContent = category.intro;
-        renderCapabilityChoices(category.keys);
-        goToStep(1);
-    }
-
-    function resetExploration() {
-        currentCategory = '';
-        currentCapability = '';
-        currentOptionIndex = 0;
-        showCategoryHome();
-    }
-
-    function selectCapability(key) {
+    function prepareCapability(key) {
         currentCapability = key;
         const data = capabilityData[key];
+        if (!data) return false;
 
-        document.getElementById('step2-question').textContent = data.q2;
-        document.getElementById('selected-context').textContent = data.exploreTitle;
         document.getElementById('professional-capability-name').textContent = data.name;
         document.getElementById('definition-text').textContent = data.definition;
 
@@ -5453,26 +5669,53 @@
             chips.appendChild(chip);
         });
 
-        const list = document.getElementById('painpoint-list');
-        list.innerHTML = '';
+        return true;
+    }
 
-        data.options.forEach((opt, index) => {
-            const btn = document.createElement('button');
-            btn.type = 'button';
-            btn.className = 'btn-list';
+    function showCategoryHome(scroll = true) {
+        currentCategory = '';
+        currentCapability = '';
+        document.getElementById('grouped-choice-list').innerHTML = '';
+        goToStep(1, scroll);
+    }
 
-            const title = document.createElement('strong');
-            title.textContent = opt.title;
-            const desc = document.createElement('span');
-            desc.textContent = opt.desc;
+    function showCategory(key) {
+        const category = categoryData[key];
+        if (!category) return;
 
-            btn.appendChild(title);
-            btn.appendChild(desc);
-            btn.addEventListener('click', () => showAdvice(index));
-            list.appendChild(btn);
+        currentCategory = key;
+        currentCapability = '';
+        document.getElementById('step2-question').textContent = `在「${category.title}」中，哪個具體情況最像您？`;
+        document.getElementById('selected-category-context').textContent = `${category.symbol}｜${category.title}`;
+        renderGroupedChoices(category.keys);
+        goToStep(2);
+    }
+
+    function resetExploration() {
+        currentCategory = '';
+        currentCapability = '';
+        currentOptionIndex = 0;
+        showCategoryHome();
+    }
+
+    function selectPainpoint(key, optionIndex) {
+        if (!prepareCapability(key)) return;
+        currentOptionIndex = optionIndex;
+
+        document.querySelectorAll('.nested-painpoint').forEach((button) => {
+            const isCurrent = button.dataset.capabilityKey === key && Number(button.dataset.optionIndex) === optionIndex;
+            button.classList.toggle('is-selected', isCurrent);
         });
 
+        showAdvice(optionIndex);
+    }
+
+    function returnToGroupedChoices() {
         goToStep(2);
+        window.requestAnimationFrame(() => {
+            const currentGroup = document.querySelector(`.capability-accordion[data-capability-key="${currentCapability}"]`);
+            if (currentGroup) currentGroup.open = true;
+        });
     }
 
     function showAdvice(optionIndex) {
